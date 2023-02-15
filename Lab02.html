@@ -315,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="loading-data-from-github">Loading Data from GitHub</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Auto<span class="ot">=</span><span class="fu">read.table</span>(<span class="st">"https://raw.githubusercontent.com/karlho/knowledgemining/gh-pages/data/Auto.data"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fix(Auto) # Starting the X11 R data editor</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#fix(Auto) # Starting the X11 R data editor</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>Auto<span class="ot">=</span><span class="fu">read.table</span>(<span class="st">"https://raw.githubusercontent.com/karlho/knowledgemining/gh-pages/data/Auto.data"</span>,<span class="at">header=</span>T,<span class="at">na.strings=</span><span class="st">"?"</span>)</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fix(Auto)</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>Auto<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/karlho/knowledgemining/gh-pages/data/Auto.csv"</span>,<span class="at">header=</span>T,<span class="at">na.strings=</span><span class="st">"?"</span>)</span>
@@ -449,7 +449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The downloaded binary packages are in
-    /var/folders/8h/3hlv7h096cn4r0v7n761qn7m0000gn/T//Rtmpz0HtyH/downloaded_packages</code></pre>
+    /var/folders/8h/3hlv7h096cn4r0v7n761qn7m0000gn/T//RtmpcQjXq7/downloaded_packages</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(ptbu, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -558,12 +558,13 @@ lstat       -1.026148 -0.8739505</code></pre>
 2 25.05335 12.827626 37.27907
 3 20.30310  8.077742 32.52846</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the differnce between "conference" and "prediction" difference?</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lstat,medv)</span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit)</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit,<span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the difference between "conference" and "prediction" difference?</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A prediction interval reflects the uncertainty around a single value, while a confidence interval reflects the uncertainty around the mean prediction values. </span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lstat,medv)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit,<span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Lab02_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
