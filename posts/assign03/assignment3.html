@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rishika Katamneni">
 
-<title>Rishika Katamneni - Assignment 2</title>
+<title>Rishika Katamneni - EPPS 6323: Assignment 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -211,7 +212,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#explanatory-data-analysis-on-teds2016-dataset" id="toc-explanatory-data-analysis-on-teds2016-dataset" class="nav-link active" data-scroll-target="#explanatory-data-analysis-on-teds2016-dataset"><u><strong>Explanatory Data Analysis on TEDS2016 Dataset</strong></u></a></li>
+  <li><a href="#load-packages-and-data" id="toc-load-packages-and-data" class="nav-link active" data-scroll-target="#load-packages-and-data">Load packages and data</a></li>
+  <li><a href="#create-a-subset-of-the-original-dataset" id="toc-create-a-subset-of-the-original-dataset" class="nav-link" data-scroll-target="#create-a-subset-of-the-original-dataset">Create a subset of the original dataset</a></li>
+  <li><a href="#what-is-the-problem" id="toc-what-is-the-problem" class="nav-link" data-scroll-target="#what-is-the-problem">What is the problem?</a></li>
   </ul>
 </nav>
     </div>
@@ -220,13 +223,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 2</h1>
+<h1 class="title">EPPS 6323: Assignment 3</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rishika Katamneni </p>
+          </div>
+  </div>
     
   
     
@@ -235,8 +244,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="explanatory-data-analysis-on-teds2016-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="explanatory-data-analysis-on-teds2016-dataset"><u><strong>Explanatory Data Analysis on TEDS2016 Dataset</strong></u></h2>
+<section id="load-packages-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-packages-and-data">Load packages and data</h2>
+<p>Use the TEDS2016 dataset to run a multiple regression model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -250,77 +260,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TEDS_2016 <span class="ot">&lt;-</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_stata</span>(<span class="st">"https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'gridExtra'
+
+The following object is masked from 'package:dplyr':
+
+    combine</code></pre>
 </div>
-<p>The problem with the dataset is that there are missing values throughout the various variables. In the “R for Data Science” book, the recommendation for unusual values in a dataset is to replace them with missing values with a NA tag. In our case we are already dealing with missing values and so R will exclude them from analysis. Another problem is that many variables that should be continuous or categorical are coded with numbers which is hard to understand the meaning for the variables. I think the meaning for the labels are in the website for the dataset, however, it would be nice to have some key.</p>
-<section id="explore-the-relationship-between-tondu-and-other-variables-including-female-dpp-age-income-edu-taiwanese-and-econ_worse.-what-methods-would-you-use-how-about-the-votetsai-variable-vote-for-dpp-candidate-tsai-ing-wen" class="level4">
-<h4 class="anchored" data-anchor-id="explore-the-relationship-between-tondu-and-other-variables-including-female-dpp-age-income-edu-taiwanese-and-econ_worse.-what-methods-would-you-use-how-about-the-votetsai-variable-vote-for-dpp-candidate-tsai-ing-wen"><strong>Explore the relationship between Tondu and other variables including female, DPP, age, income, edu, Taiwanese and Econ_worse. What methods would you use? How about the votetsai variable (vote for DPP candidate Tsai Ing-wen)?</strong></h4>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>TEDS_2016 <span class="ot">&lt;-</span> <span class="fu">read_stata</span>(<span class="st">"https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>Tondu<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(TEDS_2016<span class="sc">$</span>Tondu,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Unification now”, “Status quo, unif. in future”, “Status quo, decide later"</span>, <span class="st">"Status quo forever"</span>, <span class="st">"Status quo, indep. in future"</span>, <span class="st">"Independence now”, “No response"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(TEDS_2016<span class="sc">$</span>Tondu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 5 3 5 9 4</code></pre>
+</div>
+</div>
+</section>
+<section id="create-a-subset-of-the-original-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-subset-of-the-original-dataset">Create a subset of the original dataset</h2>
+<p>Select only relevant variables to create a subset of the dataset (Tondu, female, DPP, age, income, edu, Taiwanese and Econ_worse). Make sure the dependent variable Tondu is coded with right labels:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The Tondu variable indicates position on unification and independence</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>Tondu<span class="ot">&lt;-</span><span class="fu">factor</span>(TEDS_2016<span class="sc">$</span>Tondu,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Unification now"</span>,<span class="st">"Status quo, unif. in future"</span>,<span class="st">"Status quo, decide later"</span>,<span class="st">"Status quo forever"</span>, <span class="st">"Status quo, indep. in future"</span>, <span class="st">"Independence now"</span>,<span class="st">"No response"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#frequency table</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(TEDS_2016<span class="sc">$</span>Tondu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>subset_of_orig <span class="ot">&lt;-</span> <span class="fu">subset</span>(TEDS_2016, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"Tondu"</span>, <span class="st">"female"</span>, <span class="st">"DPP"</span>, <span class="st">"age"</span>, <span class="st">"income"</span>, <span class="st">"edu"</span>, <span class="st">"Taiwanese"</span>, <span class="st">"Econ_worse"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Run a regplot on the dependent variable using: a. Age b. Education c.&nbsp;Income</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reg_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Tondu <span class="sc">~</span> age <span class="sc">+</span> edu <span class="sc">+</span> income, subset_of_orig)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-             Unification now  Status quo, unif. in future 
-                          27                          180 
-    Status quo, decide later           Status quo forever 
-                         546                          328 
-Status quo, indep. in future             Independence now 
-                         380                          108 
-                 No response 
-                         121 </code></pre>
+Call:
+lm(formula = Tondu ~ age + edu + income, data = subset_of_orig)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7780 -1.1841 -0.4322  1.1079  5.4157 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  5.302529   0.257369  20.603  &lt; 2e-16 ***
+age         -0.004205   0.003194  -1.316   0.1882    
+edu         -0.244608   0.037579  -6.509 9.96e-11 ***
+income      -0.031855   0.016357  -1.948   0.0516 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.725 on 1676 degrees of freedom
+  (10 observations deleted due to missingness)
+Multiple R-squared:  0.04287,   Adjusted R-squared:  0.04115 
+F-statistic: 25.02 on 3 and 1676 DF,  p-value: 7.771e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># female variable</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(TEDS_2016<span class="sc">$</span>female)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(Tondu, <span class="at">fill =</span> female)) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tondu_age <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(subset_of_orig, <span class="fu">aes</span>(<span class="at">x=</span>age,<span class="at">y=</span>Tondu)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">show.legend =</span> F, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F, <span class="at">position =</span> <span class="st">"jitter"</span>, <span class="at">alpha=</span>.<span class="dv">5</span>, <span class="at">pch=</span><span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Age"</span>, <span class="at">y=</span><span class="st">"Tondu response"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>tondu_edu <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(subset_of_orig, <span class="fu">aes</span>(<span class="at">x=</span>edu,<span class="at">y=</span>Tondu)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">show.legend =</span> F, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F, <span class="at">position =</span> <span class="st">"jitter"</span>, <span class="at">alpha=</span>.<span class="dv">5</span>, <span class="at">pch=</span><span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Education"</span>, <span class="at">y=</span><span class="st">"Tondu response"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>tondu_income <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(subset_of_orig, <span class="fu">aes</span>(<span class="at">x=</span>income,<span class="at">y=</span>Tondu)) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">show.legend =</span> F, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> F, <span class="at">position =</span> <span class="st">"jitter"</span>, <span class="at">alpha=</span>.<span class="dv">5</span>, <span class="at">pch=</span><span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Income"</span>, <span class="at">y=</span><span class="st">"Tondu response"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">grid.arrange</span>(tondu_age, tondu_edu, tondu_income, <span class="at">ncol=</span><span class="dv">3</span>, <span class="at">nrow=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># income variable</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>income <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(TEDS_2016<span class="sc">$</span>income)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(income, <span class="at">fill =</span> Tondu)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>The methods that can be used to explore the variables such as female, DPP, age, votetsai, etc. are utilizing various types of charts and graphs in ggplot such as a double bar graph using geom_bar as shown above for the female variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>votetsai <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(TEDS_2016<span class="sc">$</span>votetsai)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(Tondu, <span class="at">fill =</span> votetsai)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="assignment3_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="frequency-bar-chart-for-tondu-variable" class="level4">
-<h4 class="anchored" data-anchor-id="frequency-bar-chart-for-tondu-variable"><strong>Frequency Bar Chart for Tondu variable</strong></h4>
+<section id="what-is-the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem">What is the problem?</h2>
+<p>Why? (hint: how many categories in the DV?) What can be done to improve prediction of the dependent variable?</p>
+<p><strong>The dependent variable has too many values and also the values are not ordinal which results in linear regression being not accurate to apply here. The unique() function below shows that there are a lot of categories in the dependent variable, and that is why linear regression becomes almost impossible to apply. A multinomial logistic regression model would be better to use or other statistical methods to fit the model.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(Tondu)) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Total responses"</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(subset_of_orig<span class="sc">$</span>Tondu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 5 9 4 6 2 1</code></pre>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
