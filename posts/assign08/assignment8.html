@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rishika Katamneni">
 
-<title>Rishika Katamneni - Assignment 2</title>
+<title>Rishika Katamneni - EPPS 6323: Assignment 7</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -234,7 +235,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#explanatory-data-analysis-on-teds2016-dataset" id="toc-explanatory-data-analysis-on-teds2016-dataset" class="nav-link active" data-scroll-target="#explanatory-data-analysis-on-teds2016-dataset"><u><strong>Explanatory Data Analysis on TEDS2016 Dataset</strong></u></a></li>
+  <li><a href="#linear-discriminant-analysis-lab" id="toc-linear-discriminant-analysis-lab" class="nav-link active" data-scroll-target="#linear-discriminant-analysis-lab">Linear Discriminant Analysis Lab</a></li>
+  <li><a href="#part-2-of-assignment" id="toc-part-2-of-assignment" class="nav-link" data-scroll-target="#part-2-of-assignment">Part 2 of Assignment</a></li>
+  <li><a href="#application-exercise" id="toc-application-exercise" class="nav-link" data-scroll-target="#application-exercise">Application Exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -243,13 +246,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 2</h1>
+<h1 class="title">EPPS 6323: Assignment 7</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rishika Katamneni </p>
+          </div>
+  </div>
     
   
     
@@ -258,94 +267,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="explanatory-data-analysis-on-teds2016-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="explanatory-data-analysis-on-teds2016-dataset"><u><strong>Explanatory Data Analysis on TEDS2016 Dataset</strong></u></h2>
+<section id="linear-discriminant-analysis-lab" class="level2">
+<h2 class="anchored" data-anchor-id="linear-discriminant-analysis-lab">Linear Discriminant Analysis Lab</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ISLR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.0     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.1.8
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
+<pre><code>Loading required package: ISLR</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TEDS_2016 <span class="ot">&lt;-</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_stata</span>(<span class="st">"https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: MASS</code></pre>
 </div>
-<p>The problem with the dataset is that there are missing values throughout the various variables. In the “R for Data Science” book, the recommendation for unusual values in a dataset is to replace them with missing values with a NA tag. In our case we are already dealing with missing values and so R will exclude them from analysis. Another problem is that many variables that should be continuous or categorical are coded with numbers which is hard to understand the meaning for the variables. I think the meaning for the labels are in the website for the dataset, however, it would be nice to have some key.</p>
-<section id="explore-the-relationship-between-tondu-and-other-variables-including-female-dpp-age-income-edu-taiwanese-and-econ_worse.-what-methods-would-you-use-how-about-the-votetsai-variable-vote-for-dpp-candidate-tsai-ing-wen" class="level4">
-<h4 class="anchored" data-anchor-id="explore-the-relationship-between-tondu-and-other-variables-including-female-dpp-age-income-edu-taiwanese-and-econ_worse.-what-methods-would-you-use-how-about-the-votetsai-variable-vote-for-dpp-candidate-tsai-ing-wen"><strong>Explore the relationship between Tondu and other variables including female, DPP, age, income, edu, Taiwanese and Econ_worse. What methods would you use? How about the votetsai variable (vote for DPP candidate Tsai Ing-wen)?</strong></h4>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(descr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: descr</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Smarket)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The Tondu variable indicates position on unification and independence</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>Tondu<span class="ot">&lt;-</span><span class="fu">factor</span>(TEDS_2016<span class="sc">$</span>Tondu,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Unification now"</span>,<span class="st">"Status quo, unif. in future"</span>,<span class="st">"Status quo, decide later"</span>,<span class="st">"Status quo forever"</span>, <span class="st">"Status quo, indep. in future"</span>, <span class="st">"Independence now"</span>,<span class="st">"No response"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#frequency table</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(TEDS_2016<span class="sc">$</span>Tondu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Linear Discriminant Analysis</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(Direction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assignment8_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-             Unification now  Status quo, unif. in future 
-                          27                          180 
-    Status quo, decide later           Status quo forever 
-                         546                          328 
-Status quo, indep. in future             Independence now 
-                         380                          108 
-                 No response 
-                         121 </code></pre>
+<pre><code>Direction 
+      Frequency Percent
+Down        602   48.16
+Up          648   51.84
+Total      1250  100.00</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> Year<span class="sc">&lt;</span><span class="dv">2005</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>lda.fit<span class="ot">=</span><span class="fu">lda</span>(Direction<span class="sc">~</span>Lag1<span class="sc">+</span>Lag2,<span class="at">data=</span>Smarket, <span class="at">subset=</span>Year<span class="sc">&lt;</span><span class="dv">2005</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>lda.fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+lda(Direction ~ Lag1 + Lag2, data = Smarket, subset = Year &lt; 
+    2005)
+
+Prior probabilities of groups:
+    Down       Up 
+0.491984 0.508016 
+
+Group means:
+            Lag1        Lag2
+Down  0.04279022  0.03389409
+Up   -0.03954635 -0.03132544
+
+Coefficients of linear discriminants:
+            LD1
+Lag1 -0.6420190
+Lag2 -0.5135293</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># female variable</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(TEDS_2016<span class="sc">$</span>female)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(Tondu, <span class="at">fill =</span> female)) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lda.fit, <span class="at">col=</span><span class="st">"dodgerblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="assignment8_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># income variable</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>income <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(TEDS_2016<span class="sc">$</span>income)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(income, <span class="at">fill =</span> Tondu)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Smarket<span class="fl">.2005</span><span class="ot">=</span><span class="fu">subset</span>(Smarket,Year<span class="sc">==</span><span class="dv">2005</span>) <span class="co"># Creating subset with 2005 data for prediction</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>lda.pred<span class="ot">=</span><span class="fu">predict</span>(lda.fit,Smarket<span class="fl">.2005</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lda.pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "class"     "posterior" "x"        </code></pre>
 </div>
 </div>
-<p>The methods that can be used to explore the variables such as female, DPP, age, votetsai, etc. are utilizing various types of charts and graphs in ggplot such as a double bar graph using geom_bar as shown above for the female variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>votetsai <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(TEDS_2016<span class="sc">$</span>votetsai)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(Tondu, <span class="at">fill =</span> votetsai)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lda.class<span class="ot">=</span>lda.pred<span class="sc">$</span>class</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Direction<span class="fl">.2005</span><span class="ot">=</span>Smarket<span class="sc">$</span>Direction[<span class="sc">!</span>train] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(lda.class,Direction<span class="fl">.2005</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Direction.2005
+lda.class Down  Up
+     Down   35  35
+     Up     76 106</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(lda.pred)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     class posterior.Down posterior.Up         LD1
+999     Up      0.4901792    0.5098208  0.08293096
+1000    Up      0.4792185    0.5207815  0.59114102
+1001    Up      0.4668185    0.5331815  1.16723063
+1002    Up      0.4740011    0.5259989  0.83335022
+1003    Up      0.4927877    0.5072123 -0.03792892</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(lda.pred<span class="sc">$</span>class,Smarket<span class="fl">.2005</span><span class="sc">$</span>Direction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      
+       Down  Up
+  Down   35  35
+  Up     76 106</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lda.pred<span class="sc">$</span>class<span class="sc">==</span>Smarket<span class="fl">.2005</span><span class="sc">$</span>Direction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5595238</code></pre>
 </div>
 </div>
 </section>
-<section id="frequency-bar-chart-for-tondu-variable" class="level4">
-<h4 class="anchored" data-anchor-id="frequency-bar-chart-for-tondu-variable"><strong>Frequency Bar Chart for Tondu variable</strong></h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(Tondu)) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Total responses"</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
+<section id="part-2-of-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-of-assignment">Part 2 of Assignment</h2>
 </section>
+<section id="application-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="application-exercise">Application Exercise</h2>
+
+
 </section>
 
 </main> <!-- /main -->

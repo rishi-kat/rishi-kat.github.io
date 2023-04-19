@@ -195,6 +195,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../../posts/assign07/assignment7.html">
  <span class="dropdown-text">Assignment 7</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/assign08/assignment8.html">
+ <span class="dropdown-text">Assignment 8</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -696,7 +700,9 @@ Attaching package: 'coda'</code></pre>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>TEDS_2016 <span class="ot">&lt;-</span> <span class="fu">read_stata</span>(<span class="st">"https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><span style="color: black"><strong>Are female voters more likely to vote for President Tsai? Why or why not?</strong></span> <span style="color: black">Based on the analysis below, the coefficient for the female variable is -0.06517, however, it is not significant at any level. This indicates that there is no significant difference in the voting patterns of males and females regarding votes for President Tsai. If anything, the coefficient suggests that females are less likely to vote for President Tsai.</span></p>
+<p><span style="color: black"><strong>Are female voters more likely to vote for President Tsai? Why or why not?</strong></span><br>
+<span style="color: black">Based on the analysis below, the coefficient for the female variable is -0.06517, however, it is not significant at any level. This indicates that there is no significant difference in the voting patterns of males and females regarding votes for President Tsai. If anything, the coefficient suggests that females are less likely to vote for President Tsai.</span><br>
+</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>glm.vt <span class="ot">&lt;-</span> <span class="fu">glm</span>(votetsai<span class="sc">~</span>female, <span class="at">data=</span>TEDS_2016,<span class="at">family=</span>binomial)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm.vt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -726,7 +732,9 @@ AIC: 1670.2
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
-<p><span style="color: black"><strong>Add party ID variables (KMT, DPP) and other demographic variables (age, edu, income) to improve the model. What do you find? Which group of variables work better in explaining/predicting votetsai?</strong></span> <span style="color: black">As shown in the summary below, these variables appear to predict votetsai better based on the AIC which is 850 in this model. The logistic regression model using female as sole predictor yielded an AIC value of 1670. The Akaike information criterion (AIC) is a metric that is used to compare the fit of different regression models. Also, the model with the lowest AIC offers the best fit.</span></p>
+<p><span style="color: black"><strong>Add party ID variables (KMT, DPP) and other demographic variables (age, edu, income) to improve the model. What do you find? Which group of variables work better in explaining/predicting votetsai?</strong></span><br>
+<span style="color: black">As shown in the summary below, these variables appear to predict votetsai better based on the AIC which is 850 in this model. The logistic regression model using female as sole predictor yielded an AIC value of 1670. The Akaike information criterion (AIC) is a metric that is used to compare the fit of different regression models. Also, the model with the lowest AIC offers the best fit.</span><br>
+</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>glm.vt2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(votetsai<span class="sc">~</span>female <span class="sc">+</span> KMT <span class="sc">+</span> DPP <span class="sc">+</span> age <span class="sc">+</span> edu <span class="sc">+</span> income, <span class="at">data=</span>TEDS_2016,<span class="at">family=</span>binomial)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm.vt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -762,7 +770,9 @@ AIC: 850.15
 Number of Fisher Scoring iterations: 6</code></pre>
 </div>
 </div>
-<p><span style="color: black"><strong>Try adding the following variables: Independence – Supporting Taiwan’s Independence (vs.&nbsp;Unification with China), Econ_worse – Evaluations of economy (Negative), Govt_dont_care – Political Efficacy (Government does not care about people), Minnan_father – Descendent of local Taiwanese, Mainland_father – Descendent of mainland China (migrated from mainland circa or after 1949), Taiwanese – Self-identified Taiwanese</strong></span> <span style="color: black">The model with all variables has an AIC value of 793 which is the smallest AIC of all three. This result suggests that this is the best model for predicting votetsai.</span></p>
+<p><span style="color: black"><strong>Try adding the following variables: Independence – Supporting Taiwan’s Independence (vs.&nbsp;Unification with China), Econ_worse – Evaluations of economy (Negative), Govt_dont_care – Political Efficacy (Government does not care about people), Minnan_father – Descendent of local Taiwanese, Mainland_father – Descendent of mainland China (migrated from mainland circa or after 1949), Taiwanese – Self-identified Taiwanese</strong></span><br>
+<span style="color: black">The model with all variables has an AIC value of 793 which is the smallest AIC of all three. This result suggests that this is the best model for predicting votetsai.</span><br>
+</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>glm.vt3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(votetsai<span class="sc">~</span>female <span class="sc">+</span> KMT <span class="sc">+</span> DPP <span class="sc">+</span> age <span class="sc">+</span> edu <span class="sc">+</span> income <span class="sc">+</span> Independence <span class="sc">+</span> Econ_worse <span class="sc">+</span> Govt_dont_care <span class="sc">+</span> Minnan_father <span class="sc">+</span> Mainland_father <span class="sc">+</span> Taiwanese, <span class="at">data=</span>TEDS_2016,<span class="at">family=</span>binomial)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm.vt3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
