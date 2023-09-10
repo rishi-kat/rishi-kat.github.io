@@ -14,10 +14,24 @@
     "text": "This is Rishika Katamneni’s personal website for the EPPS 6356 course (Data Visualization)."
   },
   {
+    "objectID": "blog-posts/index.html",
+    "href": "blog-posts/index.html",
+    "title": "Collection of Projects",
+    "section": "",
+    "text": "Log Cluster Healthcheck Output to PostgreSQL database\nThis project is implemented using Ansible to create and update a table in a PostgreSQL database from output text. Various Ansible modules are utilized such as postgresql_table, postgresql_copy, etc. to create a table and copy data from a text file to the table.\n\n\nBot or Not? Twitter Bot Detection Using Logistic and Multilayer Perceptron ModelsBot or Not? Twitter Bot Detection Using Logistic and Multilayer Perceptron Models\nThe purpose of this study is to investigate the effectiveness of two different machine learning classification models to distinguish whether a given Twitter account is that of a real user or that of a bot account.\n\n\nImplementing a Reinforcement Learning Algorithm for Playing the Game Blackjack using Tabular Q-learning\nIn this study, a reinforcement learning algorithm was developed for playing the game blackjack using tabular type Q-Learning. The proposed approach was assessed using the OpenAI Gymnasium’s (formerly OpenAI Gym) library for the Toy Text environment specifically focused on the game Blackjack.\n\n\nRoad Lane Detection\nThis project is implemented using Python and OpenCV to detect lanes on a road and mark stop signs with a blue circle.\n\n\nTransfer Learning on Flowers Dataset\nThis project is implemented using Python and TensorFlow to classify flowers into 13 different types by utilizing transfer learning from a pre-trained network (MobileNet V2).\n\n\nPerspective Transform on Bank Check Images\nThis project is implemented using Python and OpenCV for a bank check scanner to transform the images of checks from different camera orientations and positions."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About Me",
     "section": "",
     "text": "A student at the University of Texas at Dallas pursuing a master’s degree (M.S.) in Artificial Intelligence/Computational Modeling and Machine Learning. In the Summer of 2022, I worked as a cloud integration engineer intern at Ericsson and currently work as a software engineer at L3Harris Technologies.\nI have substantial leadership, technical experience, and excellent collaborative skills. Also, I am hardworking, reliable, organized, and punctual with a team-oriented mindset. I have proficient experience in Java, Python, C, C++, data structures, object-oriented programming, and statistical modeling."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Rishika’s Blog",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nCollection of Projects\n\n\n\n\n\n\n\nQuarto\n\n\nProjects\n\n\n\n\nThis blog post has a description of each of my projects from my master’s courses and work!\n\n\n\n\n\n\nSep 9, 2023\n\n\nRishika Katamneni\n\n\n\n\n\n\nNo matching items"
   }
 ]
