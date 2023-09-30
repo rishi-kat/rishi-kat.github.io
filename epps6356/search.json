@@ -21,6 +21,41 @@
     "text": "Exercise using the Happy Planet Data Set\n\nlibrary(openxlsx)\nhpi_data &lt;- read.xlsx(\n  \"https://github.com/rishi-kat/EPPS6356_DataVis/raw/main/happy-planet-index-data.xlsx\", \n  sheet = \"1. All countries\", \n  startRow = 8)\n\n# continents &lt;- c(\"Latin America\", \"N. America & Oceania\", \"Western Europe\", \"Middle East\", \"Africa\", \"South Asia\", \n#            \"Eastern Europe & Central Asia\", \"East Asia\")\n\nboxplot(`Life.Expectancy.(years)` ~ Continent, data = hpi_data,\n        boxwex = .5, cex = 1.5, ylab = \"Happy Planet Index\")\n\n\n\n\nBoxplot Legend for x-axis (Continent): (1) Latin America, (2) N. America & Oceania, (3) Western Europe, (4) Middle East, (5) Africa, (6) South Asia, (7) Eastern Europe & Central Asia, (8) East Asia"
   },
   {
+    "objectID": "posts/assign04/assignment4.html",
+    "href": "posts/assign04/assignment4.html",
+    "title": "Assignment 4 – Hackathon",
+    "section": "",
+    "text": "library(ggplot2)\n\nsales_data &lt;- data.frame(\n  Fruit = c(\"Small Apples\", \"Medium Apples\", \"Large Apples\", \"Small Oranges\", \"Large Oranges\"),\n  Quantity = c(10, 15, 20, 8, 25),\n  Width = c(0.3, 0.5, 0.7, 0.3, 0.7)  # Specify the widths for each bar\n)\n\nchart1 &lt;- ggplot(sales_data, aes(x = Fruit, y = Quantity, width = Width)) +\n  geom_bar(stat = \"identity\", fill = \"coral\") +\n  labs(title = \"Sales for Fruits of Different Sizes\", x = \"Fruit\", y = \"Quantity Sold\") +\n  theme(text=element_text(size=12,  family=\"serif\"))\n  \nprint(chart1)"
+  },
+  {
+    "objectID": "posts/assign04/assignment4.html#chart-1-variable-width-column-chart",
+    "href": "posts/assign04/assignment4.html#chart-1-variable-width-column-chart",
+    "title": "Assignment 4 – Hackathon",
+    "section": "",
+    "text": "library(ggplot2)\n\nsales_data &lt;- data.frame(\n  Fruit = c(\"Small Apples\", \"Medium Apples\", \"Large Apples\", \"Small Oranges\", \"Large Oranges\"),\n  Quantity = c(10, 15, 20, 8, 25),\n  Width = c(0.3, 0.5, 0.7, 0.3, 0.7)  # Specify the widths for each bar\n)\n\nchart1 &lt;- ggplot(sales_data, aes(x = Fruit, y = Quantity, width = Width)) +\n  geom_bar(stat = \"identity\", fill = \"coral\") +\n  labs(title = \"Sales for Fruits of Different Sizes\", x = \"Fruit\", y = \"Quantity Sold\") +\n  theme(text=element_text(size=12,  family=\"serif\"))\n  \nprint(chart1)"
+  },
+  {
+    "objectID": "posts/assign04/assignment4.html#chart-2-table-with-embedded-charts",
+    "href": "posts/assign04/assignment4.html#chart-2-table-with-embedded-charts",
+    "title": "Assignment 4 – Hackathon",
+    "section": "Chart 2: Table with Embedded Charts",
+    "text": "Chart 2: Table with Embedded Charts\n\nproducts &lt;- c(\"Product A\", \"Product B\", \"Product C\")\nrevenue &lt;- c(5000, 8000, 6500)\nproduct_data &lt;- data.frame(Product = products, Revenue = revenue)\n\nchart2 &lt;- ggplot(product_data, aes(x = Product, y = Revenue)) +\n  geom_col(fill = \"green\") +\n  labs(title = \"Product Revenue\", x = \"Product\", y = \"Revenue (USD)\") +\n  theme_minimal()\n\nprint(chart2)"
+  },
+  {
+    "objectID": "posts/assign04/assignment4.html#chart-3-horizontal-bar-chart",
+    "href": "posts/assign04/assignment4.html#chart-3-horizontal-bar-chart",
+    "title": "Assignment 4 – Hackathon",
+    "section": "Chart 3: Horizontal Bar Chart",
+    "text": "Chart 3: Horizontal Bar Chart\n\nsales_data &lt;- data.frame(\n  Fruit = c(\"Apples\", \"Oranges\", \"Pears\", \"Kiwis\", \"Bananas\", \"Pineapples\", \"Peaches\"),\n  Quantity = c(10, 15, 20, 8, 25, 12, 18)\n)\n\nchart3 &lt;- ggplot(sales_data, aes(x = Quantity, y = Fruit)) +\n  geom_bar(stat = \"identity\", fill = \"darkslategray4\") +\n  labs(title = \"Sales for Different Fruits\", x = \"Quantity Sold\", y = \"Type of Fruit\") + \n  theme(text=element_text(size=12, family=\"serif\"))\n\nprint(chart3)"
+  },
+  {
+    "objectID": "posts/assign04/assignment4.html#chart-4-column-chart",
+    "href": "posts/assign04/assignment4.html#chart-4-column-chart",
+    "title": "Assignment 4 – Hackathon",
+    "section": "Chart 4: Column Chart",
+    "text": "Chart 4: Column Chart\n\nhobbies &lt;- c(\"Baking\", \"Drawing\", \"Reading\")\ndata1 &lt;- c(20, 30, 15)\ndata2 &lt;- c(25, 15, 10)\ndata3 &lt;- c(15, 10, 13)\n\ndata_matrix &lt;- matrix(c(data1, data2, data3), nrow = length(hobbies), byrow = TRUE)\n\nbar_colors &lt;- c(\"firebrick\", \"navajowhite3\", \"darkolivegreen\")\nbar_labels &lt;- c(\"Yes\", \"No\", \"Maybe\")\n\nbarplot(data_matrix, beside = TRUE, col = bar_colors, names.arg = hobbies, main = \"Survey Reponses to Hobby Interests\", xlab = \"Hobby Categories\", ylab = \"Total Number of Reponses\", family=\"serif\")\n\nlegend(\"topright\", legend = bar_labels, fill = bar_colors)"
+  },
+  {
     "objectID": "posts/assign03/assignment3.html",
     "href": "posts/assign03/assignment3.html",
     "title": "Assignment 3",
@@ -39,7 +74,7 @@
     "href": "posts/assign03/assignment3.html#pre-hackathon",
     "title": "Assignment 3",
     "section": "Pre-Hackathon",
-    "text": "Pre-Hackathon\n\n## Download COVID data from OWID GitHub\nowidall = read.csv(\"https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv?raw=true\")\n# Deselect cases/rows with OWID\nowidall = owidall[!grepl(\"^OWID\", owidall$iso_code), ]\n# Subset by continent: Europe\nowideu = subset(owidall, continent==\"Europe\")\n\n#selected_countries &lt;- c(\"Spain\", \"Germany\", \"Ukraine\", \"Italy\")\n#owideu_selected &lt;- subset(owideu, location %in% selected_countries)\n\n# Change NA values to 0 for deaths\n#owideu[\"new_deaths\"][is.na(owideu[\"new_deaths\"])] &lt;- 0\n\nlibrary(ggplot2)\n\ndates &lt;- c(\"2020-01\", \"2020-02\", \"2020-04\", \"2020-06\", \"2020-08\", \n           \"2020-10\", \"2020-11\", \"2021-01\", \"2021-03\", \"2021-05\", \"2021-07\", \n           \"2021-08\", \"2021-10\", \"2021-12\", \"2022-04\", \"2022-06\", \"2022-09\", \n           \"2022-11\", \"2023-01\", \"2023-03\", \"2023-04\", \"2023-06\", \"2023-08\")\n\nvariable &lt;- ggplot(owideu, aes(x=date, y=new_deaths)) + geom_point(color='deeppink') + \n  scale_y_continuous(limits=c(0, 7000)) + xlab(\"Date\") + ylab(\"COVID Deaths in Europe (Daily)\") +\n  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())\n\nvariable\n\nWarning: Removed 48 rows containing missing values (`geom_point()`)."
+    "text": "Pre-Hackathon\n\n## Download COVID data from OWID GitHub\nowidall = read.csv(\"https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv?raw=true\")\n# Deselect cases/rows with OWID\nowidall = owidall[!grepl(\"^OWID\", owidall$iso_code), ]\n# Subset by continent: Europe\nowideu = subset(owidall, continent==\"Europe\")\n\n#selected_countries &lt;- c(\"Spain\", \"Germany\", \"Ukraine\", \"Italy\")\n#owideu_selected &lt;- subset(owideu, location %in% selected_countries)\n\n# Change NA values to 0 for deaths\n#owideu[\"new_deaths\"][is.na(owideu[\"new_deaths\"])] &lt;- 0\n\nlibrary(ggplot2)\n\ndates &lt;- c(\"2020-01\", \"2020-02\", \"2020-04\", \"2020-06\", \"2020-08\", \n           \"2020-10\", \"2020-11\", \"2021-01\", \"2021-03\", \"2021-05\", \"2021-07\", \n           \"2021-08\", \"2021-10\", \"2021-12\", \"2022-04\", \"2022-06\", \"2022-09\", \n           \"2022-11\", \"2023-01\", \"2023-03\", \"2023-04\", \"2023-06\", \"2023-08\")\n\nvariable &lt;- ggplot(owideu, aes(x=date, y=new_deaths)) + geom_point(color='deeppink') + \n  scale_y_continuous(limits=c(0, 7000)) + xlab(\"Date\") + ylab(\"COVID Deaths in Europe (Daily)\") +\n  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())\n\nvariable\n\nWarning: Removed 4 rows containing missing values (`geom_point()`)."
   },
   {
     "objectID": "posts/project/ProjectProposal.html",

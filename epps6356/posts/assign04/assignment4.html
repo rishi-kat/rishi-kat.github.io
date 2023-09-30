@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Rishika Katamneni">
-<meta name="dcterms.date" content="2023-09-17">
-<meta name="description" content="This blog post summarizes Dr.&nbsp;Edward Tufte’s discussion of data analysis.">
+<meta name="author" content="Rishika Katamneni, Mumuksha Singla, Priya Nalliah, and Ashutosh Patel">
 
-<title>EPPS 6356 Website - Summary of ‘The Future of Data Analysis’</title>
+<title>EPPS 6356 Website - Assignment 4 – Hackathon</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -149,7 +181,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#microsoft-machine-learning-data-science-summit-2016-session" id="toc-microsoft-machine-learning-data-science-summit-2016-session" class="nav-link active" data-scroll-target="#microsoft-machine-learning-data-science-summit-2016-session">Microsoft Machine Learning &amp; Data Science Summit 2016 Session</a></li>
+  <li><a href="#chart-1-variable-width-column-chart" id="toc-chart-1-variable-width-column-chart" class="nav-link active" data-scroll-target="#chart-1-variable-width-column-chart">Chart 1: Variable Width Column Chart</a></li>
+  <li><a href="#chart-2-table-with-embedded-charts" id="toc-chart-2-table-with-embedded-charts" class="nav-link" data-scroll-target="#chart-2-table-with-embedded-charts">Chart 2: Table with Embedded Charts</a></li>
+  <li><a href="#chart-3-horizontal-bar-chart" id="toc-chart-3-horizontal-bar-chart" class="nav-link" data-scroll-target="#chart-3-horizontal-bar-chart">Chart 3: Horizontal Bar Chart</a></li>
+  <li><a href="#chart-4-column-chart" id="toc-chart-4-column-chart" class="nav-link" data-scroll-target="#chart-4-column-chart">Chart 4: Column Chart</a></li>
   </ul>
 </nav>
     </div>
@@ -158,18 +193,9 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Summary of ‘The Future of Data Analysis’</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Machine Learning</div>
-    <div class="quarto-category">Data Analysis</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    This blog post summarizes Dr.&nbsp;Edward Tufte’s discussion of data analysis.
-  </div>
+<h1 class="title">Assignment 4 – Hackathon</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
@@ -177,16 +203,10 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Rishika Katamneni </p>
+             <p>Rishika Katamneni, Mumuksha Singla, Priya Nalliah, and Ashutosh Patel </p>
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 17, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -194,18 +214,85 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="microsoft-machine-learning-data-science-summit-2016-session" class="level3">
-<h3 class="anchored" data-anchor-id="microsoft-machine-learning-data-science-summit-2016-session">Microsoft Machine Learning &amp; Data Science Summit 2016 Session</h3>
-<p><br>
-“Data is more than just numbers and it’s about communicating a story effectively.” This was mentioned by the introduction speaker before Dr.&nbsp;Tufte started his presentation but it is a very important point. The topics that Dr.&nbsp;Tufte covered include future excellence, getting it right in data analysis, confirmatory-unhacked vs.&nbsp;exploratory-detective work, and the last interface: the thinking eye. Galileo was one of the greatest thinking eyes ever with his telescope he had a great amount of data. He published a document about that data which reports on his discovery of the large amount of stars (the report distinguished which stars are visible to the eye and by telescope with a symbol). Galileo stated in the document that for centuries astronomy was simply speculation but there was now visible certainty. Dr.&nbsp;Tufte then showed a study from the University of Pittsburgh (The School of Public Health) which analyzed measles cases in the US. The study concludes that vaccination prevented 106 million cases of childhood disease and about 1 million deaths.<br>
-<br>
-Data analysis is turning information into conclusions whereas analytical thinking is assessing and evaluating the relationship between information and conclusions. The purpose of data visualization is to assist in reasoning about content. The fundamental task in data analysis is to make smart comparisons. Graphics are not there for fashion or what coders want, but rather an analytical display’s whole purpose is to assist a viewer’s task of looking at evidence. Models of the future come from maps, real science and engineering, high-resolution technology, etc. Data can easily be viewed instead of “stacking it on a desk”. The future of data analysis was further shown with an example of the Swiss mountain map. Dr.&nbsp;Tufte then described the details that were shown in terms of the map’s contour lines, color choice, font size, etc. An animated graphical score visual was also demonstrated after the Swiss mountain map. Another time dimension example was shown with a visual of a goal scored during the World Cup for soccer and how the situation could be understood without the full video.<br>
-<br>
-Google Maps was the next discussion point on how the visual is a much further development from the Swiss mountain map and provides a wonderful interface for navigation. The future grows by studying the excellence in the past (the progression of the map is a prime example!). “The distribution of excellence is fiercely lognormal, skewed, and long-tailed.” This simply implies that there isn’t much excellence. John Tuke’s 3 points on the results of the conventional asymptotic theory were explained. The next important part of analytical thinking is to have an open mind but not an empty head. The crisis in data analysis is that most published studies are false. The point of data analysis is to utilize empirical information to learn about the world, to find causes and effects, etc. Despite this, the most cited and viewed papers in medical research during the time of Dr.&nbsp;Tufte’s presentation was “Why Most Published Research Findings Are False” by John P. A. Ioannidis. This big problem doesn’t just exist in the medical world!<br>
-<br>
-Dr.&nbsp;Tufte then goes through several examples of where the research findings ended up being false and some with detrimental results such as the fMRI having inflated false-positive rates. A quote from John W. Tukey was provided: “The data may not contain the answer. And, if you torture the data long enough, it will tell you anything.” It is essential to distinguish confirmatory unhacked and exploratory detective work in data analysis. A lot of the time researchers tend to modify and test the data based on what fits better and might bring in their own bias which skews the result to being no longer being “accurate”. Dr.&nbsp;Tufte described different cases where data analysis was tainted because of inaccuracy. Data should be able to be learned from, and so Dr.&nbsp;Tufte emphasized how proper data analysis results should be replicable even many years down the line. Dr.&nbsp;Tufte wraps up this part of the discussion by stating that numbers on the screen are representations of the real world so it is best to observe and learn from it directly.<br>
-<br>
-Finally, Dr.&nbsp;Tufte concludes with the thinking eye which sees and reasons what it sees, then finally produces. The production is the crucial part of the thinking eye. The key skill of the thinking eye is to have an understanding of the relationship between data and conclusions.</p>
+<section id="chart-1-variable-width-column-chart" class="level2">
+<h2 class="anchored" data-anchor-id="chart-1-variable-width-column-chart">Chart 1: Variable Width Column Chart</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sales_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fruit =</span> <span class="fu">c</span>(<span class="st">"Small Apples"</span>, <span class="st">"Medium Apples"</span>, <span class="st">"Large Apples"</span>, <span class="st">"Small Oranges"</span>, <span class="st">"Large Oranges"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Quantity =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">8</span>, <span class="dv">25</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Width =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.3</span>, <span class="fl">0.7</span>)  <span class="co"># Specify the widths for each bar</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>chart1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> Fruit, <span class="at">y =</span> Quantity, <span class="at">width =</span> Width)) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"coral"</span>) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sales for Fruits of Different Sizes"</span>, <span class="at">x =</span> <span class="st">"Fruit"</span>, <span class="at">y =</span> <span class="st">"Quantity Sold"</span>) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>,  <span class="at">family=</span><span class="st">"serif"</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chart1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assignment4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="chart-2-table-with-embedded-charts" class="level2">
+<h2 class="anchored" data-anchor-id="chart-2-table-with-embedded-charts">Chart 2: Table with Embedded Charts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Product A"</span>, <span class="st">"Product B"</span>, <span class="st">"Product C"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>revenue <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5000</span>, <span class="dv">8000</span>, <span class="dv">6500</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>product_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Product =</span> products, <span class="at">Revenue =</span> revenue)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>chart2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(product_data, <span class="fu">aes</span>(<span class="at">x =</span> Product, <span class="at">y =</span> Revenue)) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Product Revenue"</span>, <span class="at">x =</span> <span class="st">"Product"</span>, <span class="at">y =</span> <span class="st">"Revenue (USD)"</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chart2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assignment4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="chart-3-horizontal-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="chart-3-horizontal-bar-chart">Chart 3: Horizontal Bar Chart</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sales_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fruit =</span> <span class="fu">c</span>(<span class="st">"Apples"</span>, <span class="st">"Oranges"</span>, <span class="st">"Pears"</span>, <span class="st">"Kiwis"</span>, <span class="st">"Bananas"</span>, <span class="st">"Pineapples"</span>, <span class="st">"Peaches"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Quantity =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">8</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">18</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>chart3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> Quantity, <span class="at">y =</span> Fruit)) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkslategray4"</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sales for Different Fruits"</span>, <span class="at">x =</span> <span class="st">"Quantity Sold"</span>, <span class="at">y =</span> <span class="st">"Type of Fruit"</span>) <span class="sc">+</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>, <span class="at">family=</span><span class="st">"serif"</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chart3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assignment4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="chart-4-column-chart" class="level2">
+<h2 class="anchored" data-anchor-id="chart-4-column-chart">Chart 4: Column Chart</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>hobbies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Baking"</span>, <span class="st">"Drawing"</span>, <span class="st">"Reading"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">15</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">15</span>, <span class="dv">10</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">13</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(data1, data2, data3), <span class="at">nrow =</span> <span class="fu">length</span>(hobbies), <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>bar_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"firebrick"</span>, <span class="st">"navajowhite3"</span>, <span class="st">"darkolivegreen"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>bar_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"Maybe"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(data_matrix, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> bar_colors, <span class="at">names.arg =</span> hobbies, <span class="at">main =</span> <span class="st">"Survey Reponses to Hobby Interests"</span>, <span class="at">xlab =</span> <span class="st">"Hobby Categories"</span>, <span class="at">ylab =</span> <span class="st">"Total Number of Reponses"</span>, <span class="at">family=</span><span class="st">"serif"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> bar_labels, <span class="at">fill =</span> bar_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assignment4_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>
