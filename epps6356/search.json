@@ -137,7 +137,7 @@
     "href": "posts/project/ProjectProposal.html#method",
     "title": "EPPS 6356 Project Proposal",
     "section": "Method",
-    "text": "Method\nPrimarily we will utilize various data visualization charts to summarize the results of Formula One Races. For instance, we will create a bar graph in the shape of a racing circuit to demonstrate their rankings across Europe (Figure 1).\n\nFurthermore, linear regression will be used to compare various factors for each race driver such as height, fastest laps, total points, etc. for the output variable of total grand slams. This analysis will be a way to determine the best Formula driver within the dataset.\n\n\n\n\n\nFigure 1: Visual sample of the bar graph we will create using the data."
+    "text": "Method\nPrimarily we will utilize various data visualization charts to summarize the results of Formula One Races. For instance, we will create a bar graph in the shape of a racing circuit to demonstrate their rankings across Europe (Figure 1).\n\nFurthermore, linear regression will be used to compare various factors for each race driver such as height, fastest laps, total points, etc. for the output variable of total grand slams. This analysis will be a way to determine the best Formula driver within the dataset.\n\n\n\n\n\nFigure 1: Visual sample of the bar graph we will create using the data.\n\n\n\nWe would use colors representing the flags of each nation used, and if possible, we may include a dynamic interpretation of the average speeds and times demonstrated by each racer through an animation package in R. Variables such as elevation, track length, and altitude can be demonstrated through a 3D model of this graph as well."
   },
   {
     "objectID": "posts/assign01/assignment1.html",
