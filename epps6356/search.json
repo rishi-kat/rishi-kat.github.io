@@ -123,7 +123,7 @@
     "href": "posts/project/ProjectProposal.html#data",
     "title": "EPPS 6356 Project Proposal",
     "section": "Data",
-    "text": "Data\nThe dataset will be manually created by collecting and combining data from different sources such as the Formula 1 official site. The variables included in the data are driver name, country, wins, pole position, WDC, grand slams, most wins in a season, consecutive wins, pole wins, qualifying gaps, and fastest laps. These are predominantly driver-specific statistics. We will also be looking at circuit-specific data which would include variables such as elevation, track length, altitude, etc."
+    "text": "Data\nThe dataset will be manually created by collecting and combining data from different sources such as the Formula 1 official site and Stats F1. The variables included in the data are driver name, country, wins, pole position, WDC, grand slams, most wins in a season, consecutive wins, pole wins, qualifying gaps, and fastest laps. These are predominantly driver-specific statistics. We will also be looking at circuit-specific data which would include variables such as elevation, track length, altitude, etc."
   },
   {
     "objectID": "posts/project/ProjectProposal.html#research-statement",
