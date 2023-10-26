@@ -508,6 +508,8 @@ x4          0.4999091  0.1178189 4.243028 0.002164602</code></pre>
 <section id="pre-hackathon" class="level2">
 <h2 class="anchored" data-anchor-id="pre-hackathon">Pre-Hackathon</h2>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Download COVID data from OWID GitHub</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>owidall <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv?raw=true"</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Deselect cases/rows with OWID</span></span>
@@ -533,8 +535,9 @@ x4          0.4999091  0.1178189 4.243028 0.002164602</code></pre>
 <span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())</span>
 <span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>variable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 46 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 58 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="assignment3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
